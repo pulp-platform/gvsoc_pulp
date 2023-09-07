@@ -72,7 +72,7 @@ private:
 
 cluster_ctrl::cluster_ctrl(js::config *config)
 : vp::component(config)
-{
+{ 
   nb_core = get_config_int("nb_core");
 }
 
@@ -250,7 +250,7 @@ void cluster_ctrl::halt_status_sync(void *__this, bool status, int id)
 
 
 int cluster_ctrl::build()
-{
+{  
   cores = (Core_cluster_ctrl *)new Core_cluster_ctrl[nb_core];
 
   traces.new_trace("trace", &trace, vp::DEBUG);
@@ -258,7 +258,7 @@ int cluster_ctrl::build()
   in.set_req_meth(&cluster_ctrl::req);
   new_slave_port("input", &in);
 
-  for (int i; i<nb_core; i++)
+  for (int i = 0; i<nb_core; i++)
   {
     cores[i].bootaddr = 0x57575757;
 
